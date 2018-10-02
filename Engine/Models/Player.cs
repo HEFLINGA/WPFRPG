@@ -32,7 +32,7 @@ namespace Engine.Models
             get { return _characterClass; }
             set
             {
-                _name = value;
+                _characterClass = value;
                 OnPropertyChanged("CharacterClass");
             }
         }
@@ -41,7 +41,7 @@ namespace Engine.Models
             get { return _hitPoints; }
             set
             {
-                _experiencePoints = value;
+                _hitPoints = value;
                 OnPropertyChanged("HitPoints");
             }
         }
@@ -59,7 +59,7 @@ namespace Engine.Models
             get { return _level; }
             set
             {
-                _experiencePoints = value;
+                _level = value;
                 OnPropertyChanged("Level");
             }
         }
@@ -68,7 +68,7 @@ namespace Engine.Models
             get { return _gold; }
             set
             {
-                _experiencePoints = value;
+                _gold = value;
                 OnPropertyChanged("Gold");
             }
         }
