@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Models;
+using Engine.Factories;
 
 namespace Engine.ViewModels
 {
     public class GameSession
     {
+        public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
         public Location CurrentLocation { get; set; }
 
@@ -24,14 +26,10 @@ namespace Engine.ViewModels
                 Level = 1
             };
 
-            CurrentLocation = new Location
-            {
-                Name = "Home",
-                XCoordinate = 0,
-                YCoordinate = -1,
-                Description = "This is your Home",
-                ImageName = "/Engine;component/Images/Locations/Home.png"
-            };
+            WorldFactory Factory = new WorldFactory();
+            CurrentWorld = Factory.CreateWorld();
+
+            CurrentLocation = CurrentWorld.LocationAt(0, -1);
         }
     }
 }
