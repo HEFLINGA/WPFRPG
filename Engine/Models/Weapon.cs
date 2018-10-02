@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace Engine.Models
         {
             MinimumDamage = minDamage;
             MaximumDamage = maxDamage;
+        }
+
+        public new Weapon Clone()
+        {
+            return new Weapon(ItemTypeID, Name, Price, MinimumDamage, MaximumDamage);
         }
     }
 }
