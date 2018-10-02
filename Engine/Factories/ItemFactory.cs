@@ -25,8 +25,10 @@ namespace Engine.Factories
 
             if (standardItem != null)
             {
-
+                return standardItem.Clone();
             }
+
+            return null;
         }
     }
 }
