@@ -43,7 +43,7 @@ namespace Engine.Factories
                     return giantSpider;
 
                 default:
-                    throw new ArgumentException(string.Format("MonsterType '{}' does not exist", monsterID));
+                    throw new ArgumentException(string.Format("MonsterType '{0}' does not exist", monsterID));
             }
         }
 
@@ -51,7 +51,7 @@ namespace Engine.Factories
         {
             if (RandomNumberGenerator.NumberBetween(1, 100) <= percentage)
             {
-                monster.Inventory.Add(new ItemQuantity(itemID, 1));
+                monster.AddItemToInventory(ItemFactory.CreateGameItem(itemID));
             }
         }
     }
