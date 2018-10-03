@@ -18,6 +18,7 @@ namespace Engine.ViewModels
 
         private Location _currentLocation;
         private Monster _currentMonster;
+        private Trader _currentTrader;
 
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
@@ -37,6 +38,8 @@ namespace Engine.ViewModels
                 CompleteQuestsAtLocation();
                 GivePlayerQuestsAtLocation();
                 GetMonsterAtLocation();
+
+                CurrentTrader = CurrentLocation.TraderHere;
             }
         }
 
@@ -68,6 +71,18 @@ namespace Engine.ViewModels
             CurrentWorld = WorldFactory.CreateWorld();
 
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
+        }
+
+        public Trader CurrentTrader
+        {
+            get { return _currentTrader; }
+            set
+            {
+                _currentTrader = value;
+                
+                OnPropertyChanged(nameof(CurrentTrader));
+                OnPropertyChanged(nameof(HasTrader));
+            }
         }
 
         public Monster CurrentMonster
@@ -119,6 +134,8 @@ namespace Engine.ViewModels
         }
 
         public bool HasMonster => CurrentMonster != null;
+
+        public bool HasTrader => CurrentTrader != null;
 
         private void GivePlayerQuestsAtLocation()
         {
@@ -188,7 +205,7 @@ namespace Engine.ViewModels
                             RaiseMessage($"You receive a {rewardItem.Name}");
                         }
 
-                        // Mark the wuest complete
+                        // Mark the quest complete
                         questToComplete.IsCompleted = true;
                     }
                 }
