@@ -9,17 +9,14 @@
         public int RewardExperiencePoints { get; set; }
 
         public Monster(string name, string imageName, int maximumHitPoints, int hitPoints,
-            int minimumDamage, int maximumDamage,
-            int rewardExperiencePoints, int rewardGold)
+            int minimumDamage, int maximumDamage, int currentHitPoints,
+            int rewardExperiencePoints, int gold) : 
+            base(name, maximumHitPoints, currentHitPoints, gold)
         {
-            Name = name;
             ImageName = $"/Engine;component/Images/Monsters/{imageName}";
-            MaximumHitPoints = maximumHitPoints;
-            CurrentHitPoints = hitPoints;
             MinimumDamage = minimumDamage;
             MaximumDamage = maximumDamage;
             RewardExperiencePoints = rewardExperiencePoints;
-            Gold = rewardGold;
         }
 
     }
